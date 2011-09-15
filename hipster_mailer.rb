@@ -12,7 +12,7 @@ post '/mail' do
 		          :from => params[:beta_request][:email].to_s,
 		          :subject => params[:beta_request][:email] + ' vill ha access till Social Brands.', 			:body => params[:beta_request][:email] + ' vill ha access till Social Brands.'
 	end
-  back
+  redirect back
 end
 
 ## Hipster mailer 1.0
