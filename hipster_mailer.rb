@@ -8,9 +8,20 @@ end
 
 post '/mail' do
 	if params && params[:beta_request] && (request.env['HTTP_REFERER'] == 'http://socialbrandsmgt.com' || request.env['HTTP_REFERER'] == 'http://www.socialbrandsmgt.com')
-		Pony.mail :to => 'beta@socialbrandsmgt.com',
-		          :from => params[:beta_request][:email].to_s,
-		          :subject => params[:beta_request][:email] + ' vill ha access till Social Brands.', 			:body => params[:beta_request][:email] + ' vill ha access till Social Brands.'
+		Pony.mail :to       => 'beta@socialbrandsmgt.com',
+		          :from     => params[:beta_request][:email].to_s,
+		          :subject  => params[:beta_request][:email] + ' vill ha access till Social Brands.', 			:body => params[:beta_request][:email] + ' vill ha access till Social Brands.',
+		          :port     => '587', 
+		          :via      => :smptp, 
+		          :via_options => {
+		            :address                => "smtp.sendgrid.net", 
+		            :port                   => "587", 
+		            :enable_starttls_auto   => true, 
+		            :user_name              => ENV['SENDGRID_USERNAME'], 
+		            :password               => ENV['SENDGRID_PASSWORD'], 
+		            :authentication         => :plain, 
+		            :domain                 => ENV['SENDGRID_DOMAIN']
+		          }
 	end
   redirect back
 end
