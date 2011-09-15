@@ -7,7 +7,7 @@ end
 
 
 post '/mail' do
-	Pony.mail :to       => 'beta@socialbrandsmgt.com',
+	Pony.mail :to       => 'ake.nolemo@qubator.com',
 		          :from     => params[:beta_request][:email].to_s,
 		          :subject  => params[:beta_request][:email] + ' vill ha access till Social Brands.', 			:body => params[:beta_request][:email] + ' vill ha access till Social Brands.',
 		          :port     => '587', 
