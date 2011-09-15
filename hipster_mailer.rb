@@ -7,10 +7,7 @@ end
 
 
 post '/mail' do
-	unless params && params[:beta_request] && (request.env['HTTP_REFERER'] == 'http://socialbrandsmgt.com' || request.env['HTTP_REFERER'] == 'http://www.socialbrandsmgt.com')
-    "Not allowed"
-  else
-		Pony.mail :to       => 'daniel@qubator.com',
+	Pony.mail :to       => 'daniel@qubator.com',
 		          :from     => params[:beta_request][:email].to_s,
 		          :subject  => params[:beta_request][:email] + ' vill ha access till Social Brands.', 			:body => params[:beta_request][:email] + ' vill ha access till Social Brands.',
 		          :port     => '587', 
@@ -25,7 +22,6 @@ post '/mail' do
 		            :domain                 => ENV['SENDGRID_DOMAIN']
 		          }
     redirect back
-	end
 end
 
 ## Hipster mailer 1.0
