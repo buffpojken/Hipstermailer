@@ -24,5 +24,23 @@ post '/mail' do
     redirect back
 end
 
+post '/whispering_beta' do 
+  Pony.mail :to       => 'ake.nolemo@qubator.com',
+		          :from     => params[:email]
+		          :subject  => params[:email] + ' vill ha access till Whispering Brands.', 			:body => params[:email] + ' vill ha access till Whispering Brands.',
+		          :port     => '587', 
+		          :via      => :smtp, 
+		          :via_options => {
+		            :address                => "smtp.sendgrid.net", 
+		            :port                   => "587", 
+		            :enable_starttls_auto   => true, 
+		            :user_name              => ENV['SENDGRID_USERNAME'], 
+		            :password               => ENV['SENDGRID_PASSWORD'], 
+		            :authentication         => :plain, 
+		            :domain                 => ENV['SENDGRID_DOMAIN']
+		          }
+    redirect back  
+end
+
 ## Hipster mailer 1.0
 ## You probably haven't heard of it.
