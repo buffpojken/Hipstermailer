@@ -25,7 +25,7 @@ post '/mail' do
 end
 
 post '/whispering_beta' do 
-  Pony.mail :to       => 'ake.nolemo@qubator.com',
+  Pony.mail :to       => 'daniel@qubator.com',
 		          :from     => params[:email]
 		          :subject  => params[:email] + ' vill ha access till Whispering Brands.', 			:body => params[:email] + ' vill ha access till Whispering Brands.',
 		          :port     => '587', 
