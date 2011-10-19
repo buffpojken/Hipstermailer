@@ -34,8 +34,8 @@ post '/whispering_beta' do
   
   Pony.mail :to       => 'daniel@qubator.com',
 		          :from     => params[:email],
-		          :subject  => subject
-		          :body =>  subject
+		          :subject  => subject,
+		          :body =>  subject,
 		          :port     => '587', 
 		          :via      => :smtp, 
 		          :via_options => {
