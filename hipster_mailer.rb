@@ -25,10 +25,17 @@ post '/mail' do
 end
 
 post '/whispering_beta' do 
+  
+  if params[:partner]
+    subject = params[:email] + " vill bli partner"
+  else
+    subject = params[:email] + " vill ha access till Whispering Brands."    
+  end
+  
   Pony.mail :to       => 'daniel@qubator.com',
 		          :from     => params[:email],
-		          :subject  => params[:email] + ' vill ha access till Whispering Brands.',
-		          :body => params[:email] + ' vill ha access till Whispering Brands.',
+		          :subject  => subject
+		          :body =>  subject
 		          :port     => '587', 
 		          :via      => :smtp, 
 		          :via_options => {
