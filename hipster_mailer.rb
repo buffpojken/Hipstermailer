@@ -7,7 +7,7 @@ end
 
 
 post '/mail' do
-	Pony.mail :to       => 'ake.nolemo@qubator.com',
+	Pony.mail :to       => 'michael.aslander@qubator.com',
 		          :from     => params[:beta_request][:email].to_s,
 		          :subject  => params[:beta_request][:email] + ' vill ha access till Social Brands.', 			:body => params[:beta_request][:email] + ' vill ha access till Social Brands.',
 		          :port     => '587', 
@@ -31,7 +31,7 @@ post '/whispering_beta' do
     to = "michael.aslander@qubator.com"
   else
     subject = params[:email] + " vill ha access till Whispering Brands."    
-    to = "s@qubator.com"
+    to = "michael.aslander@qubator.com"
   end
   
   Pony.mail :to       => to,
